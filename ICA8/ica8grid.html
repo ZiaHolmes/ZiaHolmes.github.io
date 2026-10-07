@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+   body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.grid > * {
+  border-radius: 0.5em;
+  color: white;
+  padding: 0.5em;
+}
+
+.one {
+  background-color: rgb(74 102 112 / 70%);
+  border: 5px solid rgb(74 102 112 / 100%);
+}
+
+.two {
+  background-color: rgb(214 162 173 / 70%);
+  border: 5px solid rgb(214 162 173 / 100%);
+}
+
+.three {
+  background-color: rgba(107, 140, 80, 0.7);
+  border: 5px solid rgb(87, 112, 74);
+}
+
+.four {
+  background-color: rgba(214, 208, 162, 0.7);
+  border: 5px solid rgb(214, 202, 162);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
+  gap: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="grid">
+  <div class="one">One</div>
+  <div class="two">Two</div>
+  <div class="three">Three</div>
+  <div class="four">Four</div>
+</div>
+</body>
+</html>
