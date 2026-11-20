@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Design System</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            /* Color Palette - 5 Core Colors */
+            --color-primary: #39ff7a;     /* Neon Green - Readout Glow */
+            --color-secondary: #f2b84b;   /* Amber - Focus Rings */
+            --color-accent: #e8642c;      /* Needle Orange - Tuning Needle */
+            --color-neutral: #2f3033;     /* Faceplate Gray - Radio Body */
+            --color-highlight: #e9e2d0;   /* Cream - Main Text */
+
+            /* Derived Colors for Flexibility */
+            --color-background: #22201c;
+            --color-text-dark: #1a1712;
+            --color-text-light: var(--color-highlight);
+
+            /* Typography */
+            --font-primary: Inter, system-ui, sans-serif;
+            --font-secondary: "IBM Plex Mono", monospace;
+
+            /* Spacing System */
+            --spacing-xs: 8px;
+            --spacing-sm: 14px;
+            --spacing-md: 20px;
+            --spacing-lg: 28px;
+            --spacing-xl: 36px;
+
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            padding: var(--spacing-xl);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography Styles */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-secondary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-accent);
+        }
+
+        .body-text {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .small-text {
+            font-size: 0.75rem;
+            font-family: var(--font-secondary);
+            color: color-mix(in srgb, var(--color-text-light) 70%, transparent);
+        }
+
+        /* Color Palette Section */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .color-swatch {
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Component Styles */
+        .knob {
+            position: relative;
+            width: 96px;
+            height: 96px;
+            vertical-align: middle;
+            border-radius: 50%;
+            border: 3px solid #b9b5ad;
+            background: repeating-conic-gradient(#2c2822 0 4deg, #3a352d 4deg 8deg);
+            box-shadow: 0 4px 0 #8d897f, 0 8px 16px rgba(0, 0, 0, 0.35);
+            cursor: grab;
+        }
+
+        .knob:active {
+            cursor: grabbing;
+        }
+
+        .knob:focus-visible {
+            outline: 3px solid var(--color-secondary);
+            outline-offset: 4px;
+        }
+
+        .knob__mark {
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            width: 4px;
+            height: 22px;
+            margin-left: -2px;
+            border-radius: 2px;
+            background: #f6f1e4;
+        }
+
+        .switch {
+            position: relative;
+            width: 60px;
+            height: 76px;
+            vertical-align: middle;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .switch__bezel,
+        .switch__lever {
+            position: absolute;
+            left: 50%;
+        }
+
+        .switch__bezel {
+            top: 50%;
+            width: 38px;
+            height: 38px;
+            margin: -19px 0 0 -19px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, #2c2822 7px, #f6f1e4 8px, #b9b5ad 45%, #6d6555 100%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .switch__lever {
+            top: 37px;
+            width: 10px;
+            height: 28px;
+            margin-left: -5px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #8d897f, #f6f1e4 45%, #8d897f);
+            transition: top 100ms ease-out;
+        }
+
+        .switch[aria-pressed="true"] .switch__lever {
+            top: 11px;
+        }
+
+        /* Spacing Demonstration */
+        .spacing-demo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .spacing-block {
+            background-color: var(--color-primary);
+            height: 50px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Inter:wght@500;600;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <h1>Radio Design System</h1>
+
+        <section>
+            <h2>Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-swatch" style="background-color: var(--color-primary); color: var(--color-text-dark);">
+                    <strong>Primary Color</strong>
+                    <p>#39ff7a</p>
+                    <small>Contrast Ratio: 13.4:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-secondary); color: var(--color-text-dark);">
+                    <strong>Secondary Color</strong>
+                    <p>#f2b84b</p>
+                    <small>Contrast Ratio: 10.0:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-accent); color: var(--color-text-dark);">
+                    <strong>Accent Color</strong>
+                    <p>#e8642c</p>
+                    <small>Contrast Ratio: 5.4:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-neutral); color: var(--color-text-light);">
+                    <strong>Neutral Color</strong>
+                    <p>#2f3033</p>
+                    <small>Contrast Ratio: 10.2:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-highlight); color: var(--color-text-dark);">
+                    <strong>Highlight Color</strong>
+                    <p>#e9e2d0</p>
+                    <small>Contrast Ratio: 13.8:1</small>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Typography</h2>
+            <h1>Heading 1 - Inter</h1>
+            <h2>Heading 2 - Inter</h2>
+            <h3>Heading 3 - Inter</h3>
+            <p class="body-text">Body Text - Using Inter with a comfortable line height and readable size.</p>
+            <p class="small-text">Small Text - IBM Plex Mono, the typeface of the radio's readout and dial numbers.</p>
+        </section>
+
+        <section>
+            <h2>Spacing System</h2>
+            <div class="spacing-demo">
+                <div class="spacing-block" style="width: var(--spacing-xs)"></div>
+                <div class="spacing-block" style="width: var(--spacing-sm)"></div>
+                <div class="spacing-block" style="width: var(--spacing-md)"></div>
+                <div class="spacing-block" style="width: var(--spacing-lg)"></div>
+                <div class="spacing-block" style="width: var(--spacing-xl)"></div>
+            </div>
+            <p>Spacing blocks demonstrating size variations from xs to xl</p>
+        </section>
+
+        <section>
+            <h2>Interactive Components</h2>
+            <button class="knob" type="button" aria-label="Volume knob"><span class="knob__mark"></span></button>
+            <button class="switch" type="button" aria-pressed="false" aria-label="Switch, off"><span class="switch__bezel"></span><span class="switch__lever"></span></button>
+            <button class="switch" type="button" aria-pressed="true" aria-label="Switch, on"><span class="switch__bezel"></span><span class="switch__lever"></span></button>
+        </section>
+    </div>
+</body>
+</html>

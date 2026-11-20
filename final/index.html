@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tune in your phone number</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="final.css">
+</head>
+<body>
+  <main class="stage">
+    <h1 class="visually-hidden">Tune in your phone number</h1>
+
+    <div class="radio">
+      <div class="control">
+        <button class="knob" id="knob" type="button" role="slider"
+                aria-label="Volume knob for section 1: turn right to go up, left to go down"
+                aria-valuemin="0" aria-valuemax="999" aria-valuenow="0">
+          <span class="knob__mark" aria-hidden="true"></span>
+        </button>
+        <span class="label">VOL</span>
+      </div>
+
+      <div class="window">
+        <div class="dial" aria-hidden="true">
+          <div class="dial__ticks"></div>
+          <div class="dial__numbers">
+            <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+            <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+          </div>
+          <div class="dial__needle" id="needle"></div>
+        </div>
+        <output class="readout" id="readout" aria-live="polite">
+          <span class="group is-active">000</span>
+          <span class="group">000</span>
+          <span class="group">0000</span>
+        </output>
+      </div>
+
+      <div class="control">
+        <div class="control control--tight">
+          <div class="tune">
+            <span class="tune__stop is-active" aria-hidden="true">1</span>
+            <span class="tune__stop" aria-hidden="true">2</span>
+            <span class="tune__stop" aria-hidden="true">3</span>
+            <button class="tune__knob" id="tune" type="button" role="slider"
+                    aria-label="Tune knob: choose section"
+                    aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+              <span class="tune__mark" aria-hidden="true"></span>
+            </button>
+          </div>
+          <span class="label label--small">TUNE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dash switches: SAVE latches up until the number changes; RESET and RANDOM spring back -->
+    <div class="switches" role="group" aria-label="Dash switches">
+      <div class="switch">
+        <button class="switch__toggle" id="saveSwitch" type="button" aria-pressed="false" aria-label="Save number">
+          <span class="switch__bezel" aria-hidden="true"></span>
+          <span class="switch__hole" aria-hidden="true"></span>
+          <span class="switch__lever" aria-hidden="true"></span>
+          <span class="switch__ball" aria-hidden="true"></span>
+        </button>
+        <span class="switch__label" id="saveLabel">SAVE</span>
+      </div>
+      <div class="switch">
+        <button class="switch__toggle" id="resetSwitch" type="button" aria-pressed="false" aria-label="Reset number to zero">
+          <span class="switch__bezel" aria-hidden="true"></span>
+          <span class="switch__hole" aria-hidden="true"></span>
+          <span class="switch__lever" aria-hidden="true"></span>
+          <span class="switch__ball" aria-hidden="true"></span>
+        </button>
+        <span class="switch__label">RESET</span>
+      </div>
+      <div class="switch">
+        <button class="switch__toggle" id="randomSwitch" type="button" aria-pressed="false" aria-label="Randomize number">
+          <span class="switch__bezel" aria-hidden="true"></span>
+          <span class="switch__hole" aria-hidden="true"></span>
+          <span class="switch__lever" aria-hidden="true"></span>
+          <span class="switch__ball" aria-hidden="true"></span>
+        </button>
+        <span class="switch__label">RANDOM</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="final.js"></script>
+</body>
+</html>
